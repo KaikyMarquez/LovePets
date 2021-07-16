@@ -58,6 +58,8 @@ namespace senai_lovePets_webApi.Repositories
         public void Deletar(int idVeterinario)
         {
             ctx.Veterinarios.Remove(BuscarPorId(idVeterinario));
+
+            ctx.SaveChanges();
         }
 
         public List<Veterinario> ListarTodos()
