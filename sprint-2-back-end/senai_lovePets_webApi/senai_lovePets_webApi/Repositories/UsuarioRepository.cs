@@ -12,6 +12,11 @@ namespace senai_lovePets_webApi.Repositories
     {
         lovePetsContext ctx = new lovePetsContext();
 
+
+
+
+        
+
         public void Atualizar(int idUsuario, Usuario UsuarioAtualizado)
         {
             Usuario UsuarioBuscado = BuscarPorId(idUsuario);
@@ -59,6 +64,12 @@ namespace senai_lovePets_webApi.Repositories
         public List<Usuario> ListarTodos()
         {
             return ctx.Usuarios.ToList();
+        }
+
+        public Usuario Login(string email, string Senha)
+        {
+            return ctx.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == Senha);
+            
         }
     }
 }

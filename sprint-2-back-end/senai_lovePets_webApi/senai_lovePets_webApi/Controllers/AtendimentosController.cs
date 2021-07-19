@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai_lovePets_webApi.Domains;
 using senai_lovePets_webApi.Interfaces;
@@ -26,6 +27,7 @@ namespace senai_lovePets_webApi.Controllers
         /// Lista todos os atendimentos
         /// </summary>
         /// <returns>Uma lista de atendimentos e um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -62,6 +64,7 @@ namespace senai_lovePets_webApi.Controllers
         /// </summary>
         /// <param name="novoAtendimento">Objeto com as novas informações</param>
         /// <returns>Um status code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Atendimento novoAtendimento)
         {
@@ -83,6 +86,7 @@ namespace senai_lovePets_webApi.Controllers
         /// <param name="idAtendimento">ID do atendimento que será atualizado</param>
         /// <param name="atendimentoAtualizado">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{idAtendimento}")]
         public IActionResult Atualizar(int idAtendimento, Atendimento atendimentoAtualizado)
         {
@@ -103,6 +107,7 @@ namespace senai_lovePets_webApi.Controllers
         /// </summary>
         /// <param name="idAtendimento">ID do atendimento que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{idAtendimento}")]
         public IActionResult Deletar(int idAtendimento)
         {
@@ -123,6 +128,7 @@ namespace senai_lovePets_webApi.Controllers
         /// </summary>
         /// <param name="atendimento">Objeto com o atendimento que será alterado e a nova situação</param>
         /// <returns>Um status code 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpPatch]
         public IActionResult AlterarStatus(Atendimento atendimento)
         {

@@ -10,6 +10,15 @@ namespace senai_lovePets_webApi.Interfaces
     {
 
         List<Usuario> ListarTodos();
+        
+        /// <summary>
+        /// Busca um Usuario Existente
+        /// </summary>
+        /// <param name="email"> O e-mail que o usuario digitou</param>
+        /// <param name="Senha">A senha que o usuario digitou</param>
+        /// <returns>Um usuario encontrado</returns>
+        
+        Usuario Login(string email, string Senha);
 
 
         Usuario BuscarPorId(int idUsuario);

@@ -13,14 +13,13 @@ namespace senai_lovePets_webApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class VeterinarioController : ControllerBase
     {
-        private IUsuarioRepository _UsuarioRepository { get; set; }
+        private IVeterinarioRepository _VeterinarioRepository { get; set; }
 
-        public UsuarioController()
+        public VeterinarioController()
         {
-            _UsuarioRepository = new UsuarioRepository();
-
+            _VeterinarioRepository = new VeterinarioRepository();
         }
 
         [HttpGet]
@@ -28,7 +27,7 @@ namespace senai_lovePets_webApi.Controllers
         {
             try
             {
-                return Ok(_UsuarioRepository.ListarTodos());
+                return Ok(_VeterinarioRepository.ListarTodos());
             }
             catch (Exception erro)
             {
@@ -37,12 +36,12 @@ namespace senai_lovePets_webApi.Controllers
         }
 
 
-        [HttpGet("{idUsuario}")]
-        public IActionResult BuscarPorId(int idUsuario)
+        [HttpGet("{idVeterinario}")]
+        public IActionResult BuscarPorId(int idVeterinario)
         {
             try
             {
-                return Ok(_UsuarioRepository.BuscarPorId(idUsuario));
+                return Ok(_VeterinarioRepository.BuscarPorId(idVeterinario));
             }
             catch (Exception erro)
             {
@@ -52,11 +51,11 @@ namespace senai_lovePets_webApi.Controllers
 
 
         [HttpPost]
-        public IActionResult Atualizar(int idUsuario, Usuario UsuarioAtualizada)
+        public IActionResult Atualizar(int idVeterinario, Veterinario VeterinarioAtualizada)
         {
             try
             {
-                _UsuarioRepository.Atualizar(idUsuario, UsuarioAtualizada);
+                _VeterinarioRepository.Atualizar(idVeterinario, VeterinarioAtualizada);
 
                 return StatusCode(201);
             }
@@ -67,12 +66,12 @@ namespace senai_lovePets_webApi.Controllers
         }
 
 
-        [HttpDelete("{idUsuario}")]
-        public IActionResult Deletar(int idUsuario)
+        [HttpDelete("{idVeterinario}")]
+        public IActionResult Deletar(int idVeterinario)
         {
             try
             {
-                _UsuarioRepository.Deletar(idUsuario);
+                _VeterinarioRepository.Deletar(idVeterinario);
 
                 return StatusCode(204);
             }
@@ -81,12 +80,6 @@ namespace senai_lovePets_webApi.Controllers
                 return BadRequest(erro);
             }
         }
-
-
-
-
-
-
 
 
 
